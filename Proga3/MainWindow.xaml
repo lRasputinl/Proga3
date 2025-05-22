@@ -5,17 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proga3"
         mc:Ignorable="d"
-        Title="Заметки" Height="400" Width="600">
+        Title="Заметки" Height="500" Width="600">
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <!-- Название заметки -->
             <RowDefinition Height="Auto"/>
+            <!-- Содержание заметки -->
+            <RowDefinition Height="*"/>
+            <!-- Список заметок -->
+            <RowDefinition Height="Auto"/>
+            <!-- Кнопки -->
         </Grid.RowDefinitions>
-        <TextBox x:Name="NoteTextBox" Height="100" Margin="0,0,0,10" AcceptsReturn="True" TextWrapping="Wrap"/>
-        <ListBox x:Name="NotesListBox" Grid.Row="1" Margin="0,0,0,10"
+
+        <!-- Поле для ввода названия заметки -->
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,0,0,10">
+            <TextBox x:Name="NoteTitleTextBox" ToolTip="Введите название" MaxLength="80" SpellCheck.IsEnabled="True" Language="ru-ru"/>
+        </StackPanel>
+
+        <!-- Поле для ввода содержания заметки -->
+        <TextBox x:Name="NoteTextBox" ToolTip="Введите текст заметки" Grid.Row="1" Height="100" Margin="0,0,0,10" AcceptsReturn="True" TextWrapping="Wrap" AcceptsTab="True" SpellCheck.IsEnabled="True" Language="ru-ru"/>
+
+        <!-- Список заметок -->
+        <ListBox x:Name="NotesListBox" Grid.Row="2" Margin="0,0,0,10"
                  SelectionChanged="NotesListBox_SelectionChanged"/>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+
+        <!-- Панель с кнопками -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
             <Button Content="Добавить" Width="100" Margin="5" Click="AddNote_Click"/>
             <Button Content="Сохранить" Width="100" Margin="5" Click="SaveNote_Click"/>
             <Button Content="Удалить" Width="100" Margin="5" Click="DeleteNote_Click"/>
